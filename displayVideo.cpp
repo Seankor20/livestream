@@ -7,10 +7,9 @@ using namespace cv;
 
 int main(int argc, char** argv){
 
-     // creates the window
-    VideoCapture cap(0);                                // opens camera
+    VideoCapture cap(0);                                    // opens camera
     if(!cap.isOpened()){                                    // checks if it is opened
-        cout << "Camera is not opened" << endl;   // error msg
+        cout << "Camera is not opened" << endl;             // error msg
         return -1;
     }
 
@@ -18,13 +17,13 @@ int main(int argc, char** argv){
     double videoHeight = cap.get(CAP_PROP_FRAME_HEIGHT);
     namedWindow("livestream");
     while(true){                                            // loops video frame
-        Mat frame;                                      // initialize Mat obj frame
-        if(!cap.read(frame)){
+        Mat frame;                                          // initialize Mat obj frame
+        if(!cap.read(frame)){                               // if video is not on, break
             break;
         }
-        imshow("livestream", frame);
-        if( waitKey(30) >= 27) {
-            break;
+        imshow("livestream", frame);                        // gets livestream of video
+        if( waitKey(30) >= 27) {                            // wait for 30 ms until key is pressed
+            break;                                          // if ESC is pressed, break
         }
     }
 
